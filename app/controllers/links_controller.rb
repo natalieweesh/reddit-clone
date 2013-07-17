@@ -18,6 +18,7 @@ class LinksController < ApplicationController
     redirect_to link_url(@link.id)
   end
 
+
 private
 
   def check_link_author

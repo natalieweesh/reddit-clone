@@ -9,5 +9,17 @@ class Link < ActiveRecord::Base
 
   accepts_nested_attributes_for :subs
 
+  has_many :comments
+
+
+  def comments_by_parent
+
+    #comments => gives you all of this link's comments
+    hash = Hash.new([])
+    comments.each do |comment|
+      hash[comment.parent_comment_id] += [comment]
+    end
+    hash
+  end
 
 end

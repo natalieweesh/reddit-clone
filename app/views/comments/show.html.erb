@@ -1,0 +1,19 @@
+<h2>Comment show page</h2>
+
+<%= @comment.content %>
+
+<form action="<%= comments_url %>" method="post">
+
+  <label>New comment
+    <input type="text" name="comment[content]">
+  </label>
+
+  <input type="hidden" name="comment[link_id]" value="<%= @comment.link_id %>">
+
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="submit" value="add new comment">
+
+</form>
