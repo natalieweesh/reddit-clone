@@ -1,0 +1,26 @@
+<h2>Edit your Sub</h2>
+
+<h4>Moderator: <%= @moderator.username %></h4>
+
+
+<form action="<%= sub_url(@sub.id) %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>Name
+    <input type="text" name="sub[name]" value="<%= @sub.name %>">
+  </label>
+  <input type="hidden" name="sub[user_id]" value="<%= @moderator.id %>">
+
+  
+  <input type="submit" value="edit sub">
+</form>
+
+<% @sub.links.each_with_index do |link, i| %>
+  <ul>
+    <%= "Link #{i+1}:" %>
+    <li><%= link.title %></li>
+    <li><%= link.url %></li>
+    <li><%= link.text %></li>
+    <li>created by: <%= link.user_id %></li>
+  </ul>
+<% end %>

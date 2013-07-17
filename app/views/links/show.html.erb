@@ -1,0 +1,15 @@
+<h2>Link</h2>
+
+<h3>Title: <%= @link.title %></h3>
+
+<h3>URL: <%= @link.url %></h3>
+
+<% if @link.text %>
+<h3><%= @link.text %></h3>
+<% end %>
+
+<h3>Created by: <%= link_to @link.user.username, user_url(@link.user.id) %></h3>
+
+<% if @current_user.id == @link.user_id %>
+  <%= link_to "Edit link", edit_link_url(@link.id) %>
+<% end %>

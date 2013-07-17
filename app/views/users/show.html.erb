@@ -1,0 +1,30 @@
+<h2>User Profile Page: <%= @user.username %></h2>
+
+<% if !@subs.empty? %>
+  <h3>subs you have created:</h3>
+
+  <% @subs.each do |sub| %>
+    <ul>
+      <li><%= link_to sub.name, sub_url(sub.id) %></li>
+      <ul>
+      <% sub.links.each_with_index do |link, i| %>
+        <li>
+        <ul>
+          <%= "Link #{i+1}:" %>
+          <li>title: <%= link_to link.title, link_url(link.id) %></li>
+          <li>url: <%= link.url %></li>
+          <li>text: <%= link.text %></li>
+        </ul>
+      </li>
+      <% end %>
+    </ul>
+    </ul>
+  <% end %>
+
+<% else %>
+  <p>You have not created any subs yet!</p>
+<% end %>
+
+
+
+<%= button_to "Sign Out", session_url, :method => :delete %>

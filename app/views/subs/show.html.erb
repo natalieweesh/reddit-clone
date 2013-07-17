@@ -1,0 +1,23 @@
+<h2>Sub Show Page</h2>
+
+<h3>Moderator: <%= link_to @moderator.username, user_url(@moderator.id) %></h3>
+
+<p>Sub name: <%= @sub.name %></p>
+<ul>
+
+  <% @sub.links.each_with_index do |link, i| %>
+<li>
+  <ul>
+    <%= "Link #{i+1}:" %>
+    <li>title: <%= link_to link.title, link_url(link.id) %></li>
+    <li>url: <%= link.url %></li>
+    <li>text: <%= link.text %></li>
+    <li>created by: <%= link_to link.user.username, user_url(link.user.id) %></li>
+  </ul>
+</li>
+<% end %>
+
+</ul>
+
+<br><br>
+<%= link_to "Edit this sub", edit_sub_url %>
