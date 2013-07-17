@@ -1,7 +1,7 @@
 <h2>User Profile Page: <%= @user.username %></h2>
 
 <% if !@subs.empty? %>
-  <h3>subs you have created:</h3>
+  <h3><%= @user.username %>'s subs</h3>
 
   <% @subs.each do |sub| %>
     <ul>
@@ -25,6 +25,3 @@
   <p>You have not created any subs yet!</p>
 <% end %>
 
-
-
-<%= button_to "Sign Out", session_url, :method => :delete %>

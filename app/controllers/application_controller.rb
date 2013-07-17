@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  include ApplicationHelper
+
   def login(user)
     token = SecureRandom.urlsafe_base64
     session[:session_token] = token
@@ -8,14 +10,7 @@ class ApplicationController < ActionController::Base
     user.save!
   end
 
-  def current_user
-    return nil if session[:session_token].nil?
-    @current_user ||= User.find_by_session_token(session[:session_token])
-  end
-
-  def logged_in?
-    !!current_user
-  end
+  
 
   def authenticate
     unless logged_in?

@@ -13,3 +13,23 @@
 <% if @current_user.id == @link.user_id %>
   <%= link_to "Edit link", edit_link_url(@link.id) %>
 <% end %>
+
+<br><br>
+<h4>Comments</h4>
+
+
+<form action="<%= comments_url %>" method="post">
+
+  <label>New comment
+  <input type="text" name="comment[content]">
+  </label>
+
+  <input type="hidden" name="comment[parent_comment_id]">
+
+  <input type="hidden" name="comment[link_id]">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="submit" value="create comment">
+
+</form>
